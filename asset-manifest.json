@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/projeto-pricing/static/css/main.ab32ddb1.css",
+    "main.js": "/projeto-pricing/static/js/main.b7ec0ba3.js",
+    "index.html": "/projeto-pricing/index.html",
+    "main.ab32ddb1.css.map": "/projeto-pricing/static/css/main.ab32ddb1.css.map",
+    "main.b7ec0ba3.js.map": "/projeto-pricing/static/js/main.b7ec0ba3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab32ddb1.css",
+    "static/js/main.b7ec0ba3.js"
+  ]
+}
