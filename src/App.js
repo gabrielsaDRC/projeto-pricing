@@ -26,26 +26,25 @@ const App = () => {
 
   const handlePrecificar = async (quote, index) => {
     try {
-      const response = await axios.post('SUA_API_AQUI', quote); // Substitua 'SUA_API_AQUI' pela URL da sua API
+      const response = await axios.post('https://engine-prd.ouroverde.net.br/api/engine/calculateList', {
+        quoteLineInputs: [quote],
+      });
       if (response.status === 200) {
         setStatusMessages((prevMessages) => [
-          ...prevMessages.slice(0, index),
-          'Precificação realizada com sucesso!',
-          ...prevMessages.slice(index + 1),
+          ...prevMessages,
+          { index, message: 'Precificação realizada com sucesso!' },
         ]);
       } else {
         setStatusMessages((prevMessages) => [
-          ...prevMessages.slice(0, index),
-          'Erro na precificação. Status: ' + response.status,
-          ...prevMessages.slice(index + 1),
+          ...prevMessages,
+          { index, message: 'Erro na precificação. Status: ' + response.status },
         ]);
       }
     } catch (error) {
       console.error('Erro na requisição:', error);
       setStatusMessages((prevMessages) => [
-        ...prevMessages.slice(0, index),
-        'Erro na requisição. Verifique o console para mais detalhes.',
-        ...prevMessages.slice(index + 1),
+        ...prevMessages,
+        { index, message: 'Erro na requisição. Verifique o console para mais detalhes.' },
       ]);
     }
   };
@@ -82,17 +81,18 @@ const App = () => {
           {jsonValidationMessage}
         </div>
       )}
-
       <div className="quote-container">
         {quotes.map((quote, index) => (
           <div className="quote-item" key={quote.lineNumber}>
             <p>Linenumber: {quote.lineNumber}</p>
             <button onClick={() => handlePrecificar(quote, index)}>Precificar</button>
-            {statusMessages[index] && (
-              <span className={statusMessages[index].includes('sucesso') ? 'success' : 'error'}>
-                {statusMessages[index]}
-              </span>
-            )}
+            {statusMessages
+              .filter((msg) => msg.index === index)
+              .map((msg, msgIndex) => (
+                <span key={msgIndex} className={msg.message.includes('sucesso') ? 'success' : 'error'}>
+                  {msg.message}
+                </span>
+              ))}
           </div>
         ))}
       </div>
