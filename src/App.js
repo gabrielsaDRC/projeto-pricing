@@ -26,7 +26,7 @@ const App = () => {
 
   const handlePrecificar = async (quote, index) => {
     try {
-      const response = await axios.post('https://engine-prd.ouroverde.net.br/api/engine/calculateList', {
+      const response = await axios.post('https://engine-prd.unidas.com.br/api/engine/calculateList', {
         quoteLineInputs: [quote],
       });
       if (response.status === 200) {
