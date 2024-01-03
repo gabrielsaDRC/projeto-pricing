@@ -39,7 +39,13 @@ button:hover {
   background-color: #45a049;
 }
 
-.quote-container {
+.quote-container-leves {
+  margin-top: 20px;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.quote-container-pesados {
   margin-top: 20px;
   max-height: 70vh;
   overflow-y: scroll;
@@ -100,3 +106,23 @@ button:hover {
   background-color: #0b7dda;
 }
 
+select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Estilo para as opções do select */
+select option {
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+}
